@@ -1,4 +1,4 @@
-var app = angular.module("myDiscuss", []);
+var app = angular.module("myDiscuss", ['lazy-scroll']);
 app.controller("TabController", function($scope) {
 
   $scope.tab=null;
@@ -43,6 +43,42 @@ app.controller("TabController", function($scope) {
  }
 
 });
+
+app.controller('TestController', function($scope) {
+    var start = 0;
+    var ending = start+5;
+    var lastdata = 30;
+    var reachLast = false;
+    $scope.loadmore = "Loading More data..";
+     $scope.testData = [];
+
+
+     $scope.listData = function() {
+         if(reachLast){
+             return false;
+         }
+        var jsondt = [];
+            for (var i = start; i < ending; i++) {
+                jsondt.push({
+                                id: i, name: "name"+i
+                          });
+                };
+                start = i;
+                ending = i+10;
+
+             $scope.testData =$scope.testData.concat(jsondt);
+
+
+                     if(ending >= lastdata) {
+                         reachLast = true;
+                         $scope.loadmore = "Reached at bottom";
+                     }
+            };
+
+
+                 $scope.listData();
+
+    });
 
 
 app.controller("AlbumCtrl", function($scope,$http) {

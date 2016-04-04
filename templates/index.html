@@ -23,6 +23,7 @@
 	<!-- Angular JS -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
 	<script src="../js/app.js"></script>
+	<script src="../js/lazy-scroll.js"></script>
 	<!-- <script src="../js/album.js"></script> -->
 
 
@@ -84,73 +85,81 @@
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
-	<div class="container">
-	<div class="row">
-		<div class="col-sm-6 col-md-8 col-lg- 6 col-lg-offset-2 col-sm-offset-0 col-md-offset-2">
-			<div  class="thumbnail" ng-controller="TabController as tabs">
+	<div ng-controller="TestController">
 
-				<div>
-					<div class="clearfix">
-						<div class="pull-left">
-							<img src="../images/cover.jpg" class="img-reponsive pull-left" style="border-radius: 50%;  width: 70px; height: 70px; padding:1px;" alt="Responsive image">
-						</div>
-						<div >
-								<h3 style="color:#263238;">
-									Doctor Name
-									<small style="color:#78909c;"><p>Designation education details</p></small>
-								</h3>
+		<div class="container" lazy-scroll="listData()" lazy-scroll-trigger="50" ng-repeat="data in testData" >
+	
+		<div class="row">
+			<div class="col-sm-6 col-md-8 col-lg- 6 col-lg-offset-2 col-sm-offset-0 col-md-offset-2">
+				<div  class="thumbnail" ng-controller="TabController as tabs">
 
-						</div>
-						<div class="col-sm-4 col-md-4 col-sm-offset-0 col-md-offset-1" style="padding-bottom:5px;" >
-							<span class="badge ">tag1</span>
-							<span class="badge ">tag2</span>
-							<span class="badge ">tag3</span>
-						</div>
-
-					</div>
-
-					<div class="clearfix">
-					<p style="color:#455a64">My mother and I were discussing the use of “everybody” and “everyone” at dinner
-						 this evening. Are these two words interchangeable? Is one more informal than the other? I
-						 have a B.A. in English, but oddly have never seen this topic, nor have I been asked about this. Any
-						 insight would be greatly appreciated</p>
-					</div>
-
-						<!-- Directive -->
-					<div gallery-slider ng-controller ="AlbumCtrl" ng-show="tog"></div>
-
-
-					<!-- Number of Likes -->
-
-
-					<section class="caption"  >
-						<div class="">
-							<div  style="padding-right:14px; color:#2196f3" ng-show="isSelectedLike(1)">
-								<span class="glyphicon glyphicon-heart" style="font-size:18px">1</span>
+					<div>
+						<div class="clearfix">
+							<div class="pull-left">
+								<img src="../images/cover.jpg" class="img-reponsive pull-left" style="border-radius: 50%;  width: 70px; height: 70px; padding:1px;" alt="Responsive image">
 							</div>
-							<hr style="margin-top:-0.5px;">
-							<ul class="nav nav-pills" style=" margin-top:-5px;">
-								<li ng-class="{comment:like === 1 }" >
-									<a href ng-click="selectLike(1) " style="color:#2196f3;" ><span class="glyphicon glyphicon-heart" style="font-size:15px;">&nbsp<b>Helpful</b></span></a>
-								</li>
-								<li ng-class= "{comment:tab === 2}">
-									<a href ng-click="selectTab(2)" style="color:#2196f3;" ><span class="glyphicon glyphicon-comment" style="font-size:15px;">&nbsp<b>Comment</b></span></a>
-								</li>
-							</ul>
-								<hr>
+							<div >
+									<h3 style="color:#263238;">
+										Doctor Name
+										<small style="color:#78909c;"><p>Designation education details</p></small>
+									</h3>
+
+							</div>
+							<div class="col-sm-4 col-md-4 col-sm-offset-0 col-md-offset-1" style="padding-bottom:5px;" >
+								<span class="badge ">tag1</span>
+								<span class="badge ">tag2</span>
+								<span class="badge ">tag3</span>
+							</div>
+
 						</div>
 
-						</section>
-				</div>
+						<div class="clearfix">
+						<p style="color:#455a64">My mother and I were discussing the use of “everybody” and “everyone” at dinner
+							 this evening. Are these two words interchangeable? Is one more informal than the other? I
+							 have a B.A. in English, but oddly have never seen this topic, nor have I been asked about this. Any
+							 insight would be greatly appreciated</p>
+						</div>
+
+							<!-- Directive -->
+						<div gallery-slider ng-controller ="AlbumCtrl" ng-show="tog"></div>
+
+
+						<!-- Number of Likes -->
+
+
+						<section class="caption"  >
+							<div class="">
+								<div  style="padding-right:14px; color:#2196f3" ng-show="isSelectedLike(1)">
+									<span class="glyphicon glyphicon-heart" style="font-size:18px">1</span>
+								</div>
+								<hr style="margin-top:-0.5px;">
+								<ul class="nav nav-pills" style=" margin-top:-5px;">
+									<li ng-class="{comment:like === 1 }" >
+										<a href ng-click="selectLike(1) " style="color:#2196f3;" ><span class="glyphicon glyphicon-heart" style="font-size:15px;">&nbsp<b>Helpful</b></span></a>
+									</li>
+									<li ng-class= "{comment:tab === 2}">
+										<a href ng-click="selectTab(2)" style="color:#2196f3;" ><span class="glyphicon glyphicon-comment" style="font-size:15px;">&nbsp<b>Comment</b></span></a>
+									</li>
+								</ul>
+									<hr>
+							</div>
+
+							</section>
+					</div>
 
 
 
-					<div comment-section ng-show ="isSelected(2)"> </div>
+						<div comment-section ng-show ="isSelected(2)"> </div>
 
+					</div>
 				</div>
 			</div>
+
 		</div>
-</div>
+
+
+
+	</div>
 
 
 </body>
